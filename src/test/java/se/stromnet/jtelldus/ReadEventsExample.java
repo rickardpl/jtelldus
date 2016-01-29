@@ -40,7 +40,7 @@ public class ReadEventsExample implements TDSensorEvent.Listener, TDControllerEv
     }
 
     public void onTDControllerEvent(TDControllerEvent event) {
-        log.debug(event.toString());
+        log.info(event.toString());
     }
 
     public void onTDDeviceEvent(TDDeviceEvent event) {
