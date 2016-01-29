@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import se.stromnet.jtelldus.event.EventDispatcher;
 import se.stromnet.jtelldus.event.EventFactory;
 import se.stromnet.jtelldus.event.TelldusEvent;
+import se.stromnet.jtelldus.utils.ByteBufferUtil;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -100,6 +101,7 @@ public class TelldusClient implements Runnable {
 					if(!handleEvent(msg)) {
 						// Unhandled; clear out bb
 						log.info("Unhandled event. "+bb.remaining()+" bytes data left in buffer, throwing it away");
+						log.debug("buffer="+ ByteBufferUtil.byteArrayToHex(bb));
 
 						// We could not parse the event. This could be due to partial read. Restore the state of the buffer, and try to read some more data
 						bb.clear();
